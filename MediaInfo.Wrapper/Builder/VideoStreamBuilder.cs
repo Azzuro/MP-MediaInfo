@@ -394,7 +394,7 @@ namespace MediaInfo.Builder
 
         private static bool GetInterlaced(string source)
         {
-      return VideoCodecs.TryGetValue(codec, out result);
+            return source?.ToLower().Contains("interlaced") ?? false;
         }
 
         private static bool TryGetAspectRatio(string source, out AspectRatio result)
@@ -404,12 +404,14 @@ namespace MediaInfo.Builder
 
         private static bool TryGetCodec(string codec, out VideoCodec result)
         {
-      return VideoCodecs.TryGetValue(codec, out result);
+            return VideoCodecs.TryGetValue(codec.ToUpper(), out result);            
+            //return VideoCodecs.TryGetValue(codec, out result);
         }
 
         private static bool TryGetCodecId(string codec, out VideoCodec result)
         {
-      return StereoModes.TryGetValue(layout, out result);
+           return VideoCodecs.TryGetValue(codec.ToUpper(), out result);
+
         }
 
         private static bool TryGetFrameRateMode(string source, out FrameRateMode result)

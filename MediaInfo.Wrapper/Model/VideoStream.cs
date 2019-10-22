@@ -36,7 +36,7 @@ namespace MediaInfo.Model
         /// The video aspect ratio.
         /// </value>
         public AspectRatio AspectRatio { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the video bit depth.
         /// </summary>
@@ -44,7 +44,7 @@ namespace MediaInfo.Model
         /// The video bit depth.
         /// </value>
         public int BitDepth { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the video bitrate.
         /// </summary>
@@ -52,7 +52,7 @@ namespace MediaInfo.Model
         /// The video bitrate.
         /// </value>
         public double Bitrate { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the video codec.
         /// </summary>
@@ -60,7 +60,7 @@ namespace MediaInfo.Model
         /// The video codec.
         /// </value>
         public VideoCodec Codec { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the name of the video codec.
         /// </summary>
@@ -68,7 +68,7 @@ namespace MediaInfo.Model
         /// The name of the video codec.
         /// </value>
         public string CodecName { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the stream duration.
         /// </summary>
@@ -76,7 +76,7 @@ namespace MediaInfo.Model
         /// The stream duration.
         /// </value>
         public TimeSpan Duration { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the video format.
         /// </summary>
@@ -84,7 +84,7 @@ namespace MediaInfo.Model
         /// The video format.
         /// </value>
         public string Format { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the video frame rate.
         /// </summary>
@@ -92,7 +92,7 @@ namespace MediaInfo.Model
         /// The video frame rate.
         /// </value>
         public double FrameRate { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the frame rate mode.
         /// </summary>
@@ -100,7 +100,7 @@ namespace MediaInfo.Model
         /// The video frame rate mode.
         /// </value>
         public FrameRateMode FrameRateMode { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the video height.
         /// </summary>
@@ -108,67 +108,61 @@ namespace MediaInfo.Model
         /// The video height.
         /// </value>
         public int Height { get; set; }
-
+        
         /// <summary>
-    /// Gets or sets the video codec profile.
+        /// Gets or sets the video codec profile.
         /// </summary>
         /// <value>
-    /// The video codec profile.
+        /// The video codec profile.
         /// </value>
-    public string CodecProfile { get; set; }
-
-    /// <summary>
-    /// Gets or sets the video standard.
-    /// </summary>
-    /// <value>
-    /// Possible values:
-    /// PAL
-    /// NTSC
-    /// </value>
-    public VideoStandard Standard { get; set; }
-
-    /// <summary>
-    /// Gets or sets the video color space.
-    /// </summary>
-    /// <value>
-    /// The video color space.
-    /// </value>
-    public ColorSpace ColorSpace { get; set; }
-
-    /// <summary>
-    /// Gets or sets the video chroma subsampling.
-    /// </summary>
-    /// <value>
-    /// The video chroma subsampling.
-    /// </value>
-    public ChromaSubSampling SubSampling { get; set; }
-
-    /// <summary>
-    /// Gets or sets the stream duration.
-    /// </summary>
-    /// <value>
-    /// The stream duration.
-    /// </value>
-    public TimeSpan Duration { get; set; }
-
+        public string CodecProfile { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the video standard.
+        /// </summary>
+        /// <value>
+        /// Possible values:
+        /// PAL
+        /// NTSC
+        /// </value>
+        public VideoStandard Standard { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the video color space.
+        /// </summary>
+        /// <value>
+        /// The video color space.
+        /// </value>
+        public ColorSpace ColorSpace { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the video chroma subsampling.
+        /// </summary>
+        /// <value>
+        /// The video chroma subsampling.
+        /// </value>
+        public ChromaSubSampling SubSampling { get; set; }
+        
+        
         /// <inheritdoc />
         public override MediaStreamKind Kind => MediaStreamKind.Video;
-
-    /// Gets or sets the video HDR type.
+        
+        /// Gets or sets the video HDR type.
         /// Gets the video resolution.
         /// </summary>
-    /// The video HDR type.
+        /// The video HDR type.
         /// The video resolution.
-    public Hdr Hdr { get;set; }
-
-    /// <summary>
-    /// Gets or sets the video bit depth.
-    /// </summary>
-    /// <value>
-    /// The video bit depth.
-    /// </value>
-    public int BitDepth { get; set; }
-
+        public Hdr Hdr { get;set; }
+        
+        
+        /// <summary>
+        /// Gets the video resolution.
+        /// </summary>
+        /// <value>
+        /// The video resolution.
+        /// </value>
+        public string Resolution => GetVideoResolution();
+        
         /// <summary>
         /// Gets the video size.
         /// </summary>
@@ -176,7 +170,7 @@ namespace MediaInfo.Model
         /// The vidoe size.
         /// </value>
         public Size Size => new Size(Width, Height);
-
+        
         /// <summary>
         /// Gets or sets the video stereoscopic mode.
         /// </summary>
@@ -184,15 +178,15 @@ namespace MediaInfo.Model
         /// The video stereoscopic mode.
         /// </value>
         public StereoMode Stereoscopic { get; set; }
-
+        
         /// <summary>
         /// Gets the video stream tags.
         /// </summary>
         /// <value>
-    /// The video size.
+        /// The video size.
         /// </value>
         public VideoTags Tags { get; internal set; } = new VideoTags();
-
+        
         /// <summary>
         /// Gets or sets the video width.
         /// </summary>
@@ -200,9 +194,17 @@ namespace MediaInfo.Model
         /// The video width.
         /// </value>
         public int Width { get; set; }
-
+        
         /// <inheritdoc />
         protected override StreamKind StreamKind => StreamKind.Video;
+	    		
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="VideoStream"/> is interlaced.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if interlaced; otherwise, <c>false</c>.
+        /// </value>
+        public bool Interlaced { get; set; }
 
         private string GetVideoResolution()
         {
